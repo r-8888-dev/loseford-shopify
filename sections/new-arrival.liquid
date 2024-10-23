@@ -1,0 +1,19 @@
+{% comment %}
+  New Arrivals Section
+{% endcomment %}
+
+<div class="new-arrivals-section" style="padding: 40px 0; background-color: #f9f9f9;">
+  <h2 class="section-title" style="text-align: center; color: #333;">新着アイテム</h2>
+  <div class="product-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+    {% for product in collections['new-arrivals'].products limit: 6 %}
+      <div class="product-card" style="border: 1px solid #ddd; border-radius: 5px; padding: 15px; background-color: #fff; width: 300px; text-align: center;">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image | img_url: '300x300' }}" alt="{{ product.title }}" style="max-width: 100%; border-radius: 5px;">
+        </a>
+        <h3 class="product-title" style="font-size: 18px; color: #555; margin: 10px 0;">{{ product.title }}</h3>
+        <p class="product-price" style="color: #333;">¥{{ product.price | divided_by: 100 | money }}</p>
+        <a href="{{ product.url }}" class="add-to-cart-button" style="background-color: #007bff; color: #fff; padding: 10px 20px; border-radius: 5px; text-decoration: none;">カートに追加</a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
